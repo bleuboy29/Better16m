@@ -2,6 +2,6 @@
   "Maintenance": "No",
   "Url": "https://better16m.vercel.app/maintenance.html",
   "Message": "Better16 is undergoing scheduled maintenance",
-  "Overloaded": "No",
+  "Overloaded": "Yes",
   "OverloadedUrl": "https://better16m.vercel.app/overloaded.html"
 }
