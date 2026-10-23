@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maintenance</title>
+<style>
+/* Put your own images next to this file: logo.png (top) and art.jpg (big picture) */
+*{box-sizing:border-box}
+html,body{margin:0;background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif}
+body{min-height:100vh;display:flex;flex-direction:column}
+
+.top{height:85px;display:flex;align-items:center;justify-content:center;padding:0 12px}
+.top img{max-height:56px;max-width:100%;width:auto;height:auto;display:block}
+
+.bar{background:#f68802;text-align:center;font-size:14px;line-height:32px;min-height:32px;padding:0 12px}
+
+.stage{flex:1;display:flex;align-items:center;justify-content:center;padding:24px 12px;
+  background:radial-gradient(ellipse at center,#0d1626 0%,#000 70%)}
+.stage img{max-width:100%;max-height:70vh;width:auto;height:auto;display:block}
+
+/* shown only if art.jpg is missing */
+.stage .ph{color:#555;font-size:13px;text-align:center}
+
+@media(max-width:600px){
+  .top{height:70px}
+  .top img{max-height:44px}
+  .bar{font-size:12.5px;line-height:1.35;padding:8px 12px}
+  .stage{padding:16px 8px}
+}
+</style>
+</head>
+<body>
+
+<div class="top"><img id="logo" src="logo.png" alt="" onerror="this.style.display='none'"></div>
+<div class="bar" id="msg">Scheduled maintenance</div>
+<div class="stage">
+  <img id="art" src="art.jpg" alt="" onerror="this.style.display='none';document.getElementById('ph').style.display='block'">
+  <div class="ph" id="ph" style="display:none">art.jpg</div>
+</div>
+
+<script>
+// same domain on Vercel, so a relative path works
+var STATUS_URL = "/status.json";
+
+// the hint text is taken from the admin panel (Settings -> Maintenance Hint)
+fetch(STATUS_URL, {cache: "no-store"})
+  .then(function (r) { return r.json(); })
+  .then(function (j) { if (j.Message) document.getElementById("msg").textContent = j.Message; })
+  .catch(function () {});
+</script>
+</body>
+</html>
