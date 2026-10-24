@@ -1,7 +1,7 @@
 {
-  "Maintenance": "Yes",
+  "Maintenance": "No",
   "Url": "https://better16m.vercel.app/maintenance.html",
-  "Message": "Fixing the shaders, wait pls",
+  "Message": "Better16 on maintenance",
   "Overloaded": "No",
   "OverloadedUrl": "https://better16m.vercel.app/overloaded.html"
 }
